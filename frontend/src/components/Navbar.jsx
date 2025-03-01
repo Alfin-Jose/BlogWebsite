@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { BsSearch } from 'react-icons/bs';
 import { FaBars } from 'react-icons/fa';
 import Menu from './Menu';
-import { UserContext } from '../context/UserContext'; // Ensure this is correctly imported
+import { userContext } from '../context/UserContext'; // Ensure this is correctly imported
 
 function Navbar() {
   const [prompt, setPrompt] = useState("");
@@ -15,7 +15,7 @@ function Navbar() {
     setMenu(!menu);
   };
 
-  const { user } = useContext(UserContext);
+  const { user } = useContext(userContext);
 
   return (
     <div>

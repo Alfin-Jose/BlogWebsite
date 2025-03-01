@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home'
 import Login from'./pages/Login'
@@ -20,7 +19,7 @@ function App() {
       <Route exact path='/' element={<Home/>} />
       <Route exact path='/login' element={<Login/>} />
       <Route exact path='/Register' element={<Register/>} />
-      <Route exact path='/write' element={<createPost/>} />
+      <Route exact path='/write' element={<CreatePost/>} />
       <Route exact path='/Post/post/:id' element={<PostDetails/>} />
       <Route exact path='/edit/:id' element={<EditPost/>} />
       <Route exact path='/myblogs/:id' element={<MyBlogs/>} />

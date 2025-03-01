@@ -1,26 +1,28 @@
-import React from 'react'
-import axios from 'axios'
-import {createContext,useEffect,useState}from 'react'
+import React, { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { URL } from '../url';
 
-import {URL} from '../url'
-export const userContext=createContext({})
+export const UserContext = createContext({}); // Changed to UserContext
 
+export default function UserContextProvider({ children }) {
+    const [user, setUser] = useState(null);
 
-export default function UserContextProvider({children}){
-    const [user,setUser]=useState(null)
-    useEffect(()=>{
-        getuser()
-    },[])
-    const getUser=async()=>{
-        try{
-            const res=await axios.get(URL+"api/auth/refetch",{withcredentials:true})
-            setUser(res.data)
+    useEffect(() => {
+        getUser();
+    }, []);
+
+    const getUser = async () => {
+        try {
+            const res = await axios.get(URL + "api/auth/refetch", { withCredentials: true });
+            setUser(res.data);
+        } catch (err) {
+            console.log(err);
         }
-    catch(err){
-        console.log(err)
-    }
-    }
-    return(
-      <UserContext.Provider value={{user,setuser}}></UserContext.Provider>
-    )
+    };
+
+    return (
+        <UserContext.Provider value={{ user, setUser }}>
+            {children}
+        </UserContext.Provider>
+    );
 }
